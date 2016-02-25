@@ -1,0 +1,13 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form -%}
+    <h2>New Payout Structure</h2>
+
+    {{ form(form) }}
+
+
+    <a href="{{ path('admin_PayoutStructure') }}" class="btn-sm btn-primary">
+        Back
+    </a>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form -%}
+    <h2>Contest Styles</h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th><a href="{{ path('admin_ContestStyle_new') }}" class="btn-sm btn-info">
+                    Create ContestStyle
+                </a></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_ContestStyle_show', { 'id': entity.id }) }}"
+                       class="btn-sm btn-primary">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>
+                    <a href="{{ path('admin_ContestStyle_show', { 'id': entity.id }) }}"
+                       class="btn-sm btn-primary">show</a>
+                    <a href="{{ path('admin_ContestStyle_edit', { 'id': entity.id }) }}"
+                       class="btn-sm btn-primary">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+<table id="playerListTable" class="table table-condensed">
+    <thead>
+    <tr>
+        <th>Position</th>
+        <th>Player</th>
+        <th>Team/Opp</th>
+        <th>Opp Rank</th>
+        <th>FPPG</th>
+        <th>Salary</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody class="playerList">
+    {% for p in playerList %}
+        <tr>
+            <td><span class="label label-primary">{{ p.position }}</span></td>
+            <td>{{ p.name }}</td>
+            <td><b>{{ p.team }}</b> @ {{ p.opponent }}</td>
+            <td>{{ p.opponentRank }}</td>
+            <td>{{ p.opponentPositionRank }}</td>
+            <td>{{ p.salary }}</td>
+            <td>
+                <div id='draftBtn-{{ p.player }}' class='btn btn-sm btn-success draft-player' data-player='{
+                    "id" : {{ p.id }},
+                    "playerID" : {{ p.player }},
+                    "shortName" : "{{ p.shortName }}",
+                    "name" : "{{ p.name }}",
+                    "team" : "{{ p.team }}",
+                    "opponent" : "{{ p.opponent }}",
+                    "position" : "{{ p.position }}",
+                    "salary" : {{ p.salary }},
+                    "lastGameFantasyPoints" : "{{ p.lastGameFantasyPoints }}",
+                    "projectedFantasyPoints" : "{{ p.projectedFantasyPoints }}",
+                    "opponentRank" : "{{ p.opponentRank }}",
+                    "opponentPositionRank" : "{{ p.opponentPositionRank }}",
+                    "status" : "{{ p.status }}",
+                    "statusCode" : "{{ p.statusCode }}",
+                    "statusColor" : "{{ p.statusColor }}"
+                }'>+
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

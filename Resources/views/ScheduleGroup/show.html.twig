@@ -1,0 +1,33 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form -%}
+    <h1>ScheduleGroup</h1>
+
+    <table class="record_properties table-condensed">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>Name</td>
+            <td>Games</td>
+            <td>
+                <a href="{{ path('schedulegroup') }}" class="btn-sm btn-primary">Back</a>
+            </td>
+        </tr>
+        <tr>
+            <th>{{ entity.id }}</th>
+            <td>{{ entity.name }}</td>
+            <td>{% for schedules in entity.schedules %}
+                    <div class="label label-info">{{ schedules.awayTeam }} vs {{ schedules.homeTeam }}
+                        @ {{ schedules.timeOnly|date('h:m a') }}</div>
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{{ path('schedulegroup_edit', { 'id': entity.id }) }} " class="btn-sm btn-primary">Edit</a>
+                {{ form(delete_form) }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}

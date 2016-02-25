@@ -1,0 +1,154 @@
+{% if contestEntries %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>contest</th>
+            <th>Players</th>
+            <th>Fee</th>
+            <th>Date</th>
+            <th>Games</th>
+            <th>Prizes</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% set currentEntry = 'none' %}
+        {% for contestEntry in contestEntries %}
+            {% if currentEntry != contestEntry.contest.name %}
+                <tr>
+                    <td>{{ contestEntry.contest.name }}</td>
+                    <td>{{ contestEntry.contest.contestEntries|length }} / {{ contestEntry.contest.playerCount }}</td>
+                    <td>{{ contestEntry.contest.entryFee.entryFeeString }}</td>
+                    <td>{{ contestEntry.contest.scheduleGroup.name }}</td>
+                    <td>{{ render(controller('GameBundle:Contest:getGamesForScheduleGroup', {'id': contestEntry.contest.scheduleGroup.id })) }}</td>
+                    <td>{{ render(controller('GameBundle:Contest:getPrizes', {'playerCount':contestEntry.contest.playerCount, 'gameFee': contestEntry.contest.entryFee.id, 'payoutStructure': contestEntry.contest.payoutStructure.id })) }}</td>
+                    <td></td>
+                </tr>
+                {% set currentEntry =  contestEntry.contest.name %}
+            {% endif %}
+
+            <tr>
+                <th>Position</th>
+                <th>Player</th>
+                <th>Opp</th>
+                <th>Opp Rank</th>
+                <th>FPPG</th>
+                <th>Salary</th>
+                <th>
+                    <a href="{{ url('update_contestentry', {'id': contestEntry.id}) }}">
+                        <div class="btn btn-sm btn-default player-select">Manage Entry</div>
+                    </a>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">QB ID-{{ contestEntry.qb.id }}</span>
+                </td>
+                <td>{{ contestEntry.qb.name }}</td>
+                <td>{{ contestEntry.qb.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.qb.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.qb.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.qb.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.qb.currentStatus }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">WR1 ID-{{ contestEntry.wr1.id }}</span>
+                </td>
+                <td>{{ contestEntry.wr1.name }}</td>
+                <td>{{ contestEntry.wr1.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.wr1.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.wr1.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.wr1.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.wr1.currentStatus }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">WR2 ID-{{ contestEntry.wr2.id }}</span>
+                </td>
+                <td>{{ contestEntry.wr2.name }}</td>
+                <td>{{ contestEntry.wr2.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.wr2.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.wr2.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.wr2.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.wr2.currentStatus }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">RB1 ID-{{ contestEntry.rb1.id }}</span>
+                </td>
+                <td>{{ contestEntry.rb1.name }}</td>
+                <td>{{ contestEntry.rb1.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.rb1.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.rb1.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.rb1.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.rb1.currentStatus }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">RB2 ID-{{ contestEntry.rb2.id }}</span>
+                </td>
+                <td>{{ contestEntry.rb2.name }}</td>
+                <td>{{ contestEntry.rb2.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.rb2.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.rb2.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.rb2.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.rb2.currentStatus }}</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="label label-primary">TE ID-{{ contestEntry.te.id }}</span>
+                </td>
+                <td>{{ contestEntry.te.name }}</td>
+                <td>{{ contestEntry.te.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.te.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.te.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.te.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.te.currentStatus }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">FLEX ID-{{ contestEntry.flex.id }}</span>
+                </td>
+                <td>{{ contestEntry.flex.name }}</td>
+                <td>{{ contestEntry.flex.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.flex.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.flex.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.flex.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.flex.currentStatus }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">K ID-{{ contestEntry.k.id }}</span>
+                </td>
+                <td>{{ contestEntry.k.name }}</td>
+                <td>{{ contestEntry.k.upcomingGameOpponent }}</td>
+                <td>{{ contestEntry.k.upcomingOpponentRank }}</td>
+                <td>{{ contestEntry.k.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.k.upcomingSalary | localizedcurrency }}</td>
+                <td>{{ contestEntry.k.currentStatus }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary">DEF ID-{{ contestEntry.def.id }}</span>
+                </td>
+                <td>{{ contestEntry.def.fullname }}</td>
+                <td></td>
+                <td>{{ contestEntry.def.upcomingOpponentPositionRank }}</td>
+                <td>{{ contestEntry.def.upcomingSalary | localizedcurrency }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% else %}
+
+    <div class="row">You have not entered any contests</div>
+
+{% endif %}
+
+
+

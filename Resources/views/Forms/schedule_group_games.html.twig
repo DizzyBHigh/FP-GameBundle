@@ -1,0 +1,7 @@
+<div class="row">
+    <h5>
+        {% for schedule in schedules %}
+            <span class="label label-info">{{ schedule.awayTeam }} @ {{ schedule.homeTeam }}</span>
+        {% endfor %}
+    </h5>
+</div>

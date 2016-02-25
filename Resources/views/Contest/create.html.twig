@@ -1,0 +1,136 @@
+{% extends '@Design/Default/layout-main.html.twig' %}
+
+{% block title %}Create Contest{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/design/css/homebase.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/design/css/menu.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/design/css/bootstrap.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block header %}
+    {% include 'DesignBundle:Default/Menus:homepage-menu.html.twig' %}
+    <div class="row">
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <section>
+
+        <div class="container">
+            <div class="row jumbotron color-bkg">
+                <div class="row">
+                    <h2><span class="glyphicon glyphicon-pencil"></span> Create a Contest</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row centered-form">
+                            {% include 'GameBundle:Forms:ajax_contestform.Partial.twig' %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h4><span class="label label-primary"> Games</span></h4>
+                        </div>
+                        <div id="schedules" class="row">
+
+                        </div>
+                        <div class="row">
+                            <h4><span class="label label-primary"> Prizes</span></h4>
+                        </div>
+                        <div id="prizes" class="row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $scheduleGroupID = $('#contest_scheduleGroup').val();
+            if ($scheduleGroupID) {
+                getGames();
+            }
+
+            $('body').delegate('#contest_scheduleGroup', 'change', function () {
+                getGames();
+            });
+
+            function getGames() {
+                $scheduleGroupID = $('#contest_scheduleGroup').val();
+                if ($scheduleGroupID) {
+                    $.ajax({
+                        type: 'GET',
+                        url: Routing.generate('getGamesForSchedule', {id: $scheduleGroupID}),
+                        success: function ($data) {
+                            $('#schedules').html($data);
+                        },
+                        error: function () {
+                        }
+                    });
+                } else {
+                    $('#schedules').html('');
+                }
+
+            }
+
+            $('body').delegate('#contest_contestStyle', 'change', function () {
+                $form = $('#contestForm');
+                $.ajax({
+                    type: 'POST',
+                    url: Routing.generate('ajaxSubmitContestForm'),
+                    data: $form.serialize(),
+                    success: function (data) {
+                        $('#contestForm').replaceWith(data);
+                        getGames();
+                    },
+                    error: function () {
+
+                    }
+                });
+            });
+
+            $('body').delegate('#contest_entryFee, #contest_playerCount, #contest_payoutStructure', 'change', function () {
+                $playerCount = $('#contest_playerCount').val();
+                $gameFee = $('#contest_entryFee').val();
+                $payoutStructure = $('#contest_payoutStructure').val();
+                if ($gameFee > 0) {
+                    $.ajax({
+                        type: 'GET',
+                        url: Routing.generate('ajaxPrizeList', {
+                            playerCount: $playerCount,
+                            gameFee: $gameFee,
+                            payoutStructure: $payoutStructure
+                        }),
+                        success: function (data) {
+                            $('#prizes').html(data);
+
+                        },
+                        error: function () {
+
+                        }
+                    });
+                } else {
+                    $('#prizes').html('');
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+

@@ -1,0 +1,34 @@
+#playerListContent {
+    width: 100%;
+}
+
+#playerListTable thead tbody tr td th {
+    display: block;
+}
+
+#playerListTable tr:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+#playerListTable thead th {
+    height: 30px;
+
+    /*text-align: left;*/
+}
+
+#playerListTable tbody {
+    height: 700px;
+    overflow-y: auto;
+}
+
+#playerListTable thead {
+    /* fallback */
+}
+
+#playerListTable tbody td thead th {
+    width: 15%;
+    float: left;
+}

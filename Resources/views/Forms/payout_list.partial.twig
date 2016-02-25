@@ -1,0 +1,7 @@
+<div class="row">
+    <h5>
+        {% for prize in prizes %}
+            <span class="label label-success">{{ loop.index|localizednumber('ordinal') }}</span> {{ prize|localizedcurrency('GBP') }}
+        {% endfor %}
+    </h5>
+</div>

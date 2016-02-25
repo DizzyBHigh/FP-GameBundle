@@ -1,0 +1,48 @@
+contests:
+    resource: "@GameBundle/Controller/ContestController.php"
+    type:     annotation
+
+contestEntrys:
+    path:     /contests/contestEntrys/{id}
+    defaults: { _controller: GameBundle:Contest:entryList }
+
+getGamesForSchedule:
+    path:     /contests/GetGamesForSchedule/{id}
+    defaults: { _controller: GameBundle:Contest:getGamesForScheduleGroup }
+    options:
+        expose: true
+
+ajaxSubmitContestForm:
+    path:     /contests/ajaxContestSubmit/
+    defaults: { _controller: GameBundle:Contest:ajax }
+    options:
+        expose: true
+
+getPlayersForContest:
+    path:     /contests/players/{contestID}/
+    defaults: { _controller: GameBundle:FantasyPlayer:getPlayers }
+    options:
+        expose: true
+
+ajaxPrizeList:
+    path:     /contests/prizelist/{playerCount}/{gameFee}/{payoutStructure}
+    defaults: { _controller: GameBundle:Contest:getPrizes }
+    options:
+        expose: true
+
+scheduleGroups:
+    resource: "@GameBundle/Controller/ScheduleGroupController.php"
+    type:     annotation
+
+entryFees:
+    resource: "@GameBundle/Controller/EntryFeeController.php"
+    type:     annotation
+
+contestStyle:
+    resource: "@GameBundle/Controller/ContestStyleController.php"
+    type:     annotation
+
+payoutStructure:
+    resource: "@GameBundle/Controller/PayoutStructureController.php"
+    type:     annotation
+

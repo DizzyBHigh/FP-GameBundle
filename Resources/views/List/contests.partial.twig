@@ -1,0 +1,35 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>contest</th>
+        <th>Players</th>
+        <th>Fee / Pot Total</th>
+        <th>Date</th>
+        <th>Games</th>
+        <th>Prizes</th>
+        <th><a href="{{ url('create_contest') }}">
+                <div class="btn btn-sm btn-success">Create Contest</div>
+            </a></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for contest in contests %}
+        <tr>
+            <td>{{ contest.name }}</td>
+            <td>{{ contest.contestEntries|length }} / {{ contest.playerCount }}</td>
+            <td>{{ contest.entryFee.entryFee|localizedcurrency('GBP') }}
+                / {% set total = contest.playerCount * contest.entryFee.entryFee / 100 * 90 %} {{ total| localizedcurrency('GBP') }}</td>
+            <td>{{ contest.scheduleGroup.name }}</td>
+            <td>{{ render(controller('GameBundle:Contest:getGamesForScheduleGroup', {'id': contest.scheduleGroup.id })) }}</td>
+            <td>{{ render(controller('GameBundle:Contest:getPrizes', {'playerCount':contest.playerCount, 'gameFee': contest.entryFee.id, 'payoutStructure': contest.payoutStructure.id })) }}</td>
+            <td><a href="{{ url('enter_contest', {'id': contest.id}) }}">
+                    <div class="btn btn-sm btn-default">Enter</div>
+                </a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+

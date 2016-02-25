@@ -1,0 +1,12 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form -%}
+    <h2>ContestStyle creation</h2>
+
+    {{ form(form) }}
+
+
+    <a href="{{ path('admin_ContestStyle') }}">
+        Back to the list
+    </a>
+{% endblock %}

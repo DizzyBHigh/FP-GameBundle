@@ -1,0 +1,24 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form -%}
+    <h2>Edit Payout Structure</h2>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>{{ entity.id }}</td>
+            <td>{{ entity.name }}</td>
+            <td>
+                <a href="{{ path('admin_PayoutStructure') }}" class="btn-sm btn-primary">Back</a>
+            </td>
+            <td>
+                <a href="{{ path('admin_PayoutStructure_edit', { 'id': entity.id }) }}"
+                   class="btn-sm btn-primary">Edit</a>
+            </td>
+            <td>
+                {{ form(delete_form) }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

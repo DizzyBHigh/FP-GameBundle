@@ -1,0 +1,32 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form %}
+    <h2>Entry Fees</h2>
+
+    <table class="table-striped table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Entry fee</th>
+            <th>Entry fee string</th>
+            <th><a href="{{ path('entryfee_new') }}" class="btn-primary btn-sm">Add New Fee</a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('entryfee_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.entryFee }}</td>
+                <td>{{ entity.entryFeeString }}</td>
+                <td>
+                    <a href="{{ path('entryfee_show', { 'id': entity.id }) }}" class="btn-info btn-sm">show</a>
+                    <a href="{{ path('entryfee_edit', { 'id': entity.id }) }}" class="btn-info btn-sm">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

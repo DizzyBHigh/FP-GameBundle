@@ -1,0 +1,51 @@
+services:
+    #Forms
+    contest_form:
+        class: FantasyPro\GameBundle\Form\ContestType
+        arguments: [@doctrine.orm.fantasydata_entity_manager]
+        tags:
+            - { name: form.type, alias: contest }
+
+    contestEntry_form:
+        class: FantasyPro\GameBundle\Form\ContestEntryType
+        arguments: [@doctrine.orm.fantasydata_entity_manager ]
+        tags:
+            - { name: form.type, alias: contestEntry }
+
+    schedulegroups_form:
+        class: FantasyPro\GameBundle\Form\ScheduleGroupsType
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: schedulegroups }
+
+    form.type.entity_hidden:
+        class: FantasyPro\GameBundle\Form\Type\EntityHiddenType
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: entity_hidden }
+
+    form.type.team_hidden:
+        class: FantasyPro\GameBundle\Form\Type\TeamHiddenType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type, alias: team_hidden }
+
+    form.type.player_hidden:
+            class: FantasyPro\GameBundle\Form\Type\PlayerHiddenType
+            arguments: ['@doctrine.orm.entity_manager']
+            tags:
+                - { name: form.type, alias: player_hidden }
+
+    #Helpers
+    contest_helper:
+        class: FantasyPro\GameBundle\Helpers\ContestHelper
+        arguments: [@doctrine.orm.fantasydata_entity_manager, @date_helper]
+
+    prize_helper:
+        class: FantasyPro\GameBundle\Helpers\PrizeHelper
+        arguments: [@doctrine.orm.fantasydata_entity_manager]
+
+    twig.extension.text:
+         class: Twig_Extensions_Extension_Intl
+         tags:
+             - { name: twig.extension }

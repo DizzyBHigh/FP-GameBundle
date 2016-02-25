@@ -1,0 +1,76 @@
+<form action="{{ path('create_contest') }}" method="POST" class="form-horizontal" role="form" novalidate="novalidate"
+      id="contestForm">
+
+    {{ form_errors(contestForm) }}
+
+    {% if form_errors(contestForm.scheduleGroup) %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ form_errors(contestForm.scheduleGroup) }}
+        </div>
+    {% endif %}
+
+    {{ form_label(contestForm.scheduleGroup) }}
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        {{ form_widget(contestForm.scheduleGroup) }}
+        {{ form_errors(contestForm.scheduleGroup) }}
+    </div>
+
+    {% if form_errors(contestForm.contestStyle) %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ form_errors(contestForm.contestStyle) }}
+        </div>
+    {% endif %}
+    {{ form_label(contestForm.contestStyle) }}
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><li class="glyphicon glyphicon-tower"></li></span>
+        {{ form_widget(contestForm.contestStyle) }}
+    </div>
+
+    {% if form_errors(contestForm.playerCount) %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ form_errors(contestForm.playerCount) }}
+        </div>
+    {% endif %}
+
+    {{ form_label(contestForm.playerCount) }}
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><li class="glyphicon glyphicon-user"></li><li
+                    class="glyphicon glyphicon-user"></li></span>
+        {{ form_widget(contestForm.playerCount) }}
+    </div>
+
+    {% if form_errors(contestForm.entryFee) %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ form_errors(contestForm.entryFee) }}
+        </div>
+    {% endif %}
+    {{ form_label(contestForm.entryFee) }}
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><li class="glyphicon glyphicon-gbp"></li></span>
+        {{ form_widget(contestForm.entryFee) }}
+    </div>
+
+    {% if form_errors(contestForm.payoutStructure) %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ form_errors(contestForm.payoutStructure) }}
+        </div>
+    {% endif %}
+    {{ form_label(contestForm.payoutStructure) }}
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><li class="glyphicon glyphicon-gbp"></li></span>
+        {{ form_widget(contestForm.payoutStructure) }}
+    </div>
+
+    {{ form_rest(contestForm) }}
+    <div class="form-group last">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-success btn-sm">Create Contest</button>
+        </div>
+    </div>
+</form>

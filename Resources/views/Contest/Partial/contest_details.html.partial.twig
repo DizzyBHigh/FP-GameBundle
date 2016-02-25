@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="row">
+        <h4><span class="label label-primary">Contest Details</span></h4>
+        <span class="label label-primary">Contest</span> {{ contest.name }}
+        <span class="label label-primary">Players</span> {{ contest.playerCount }}
+        <span class="label label-primary"></span>
+        <span class="label label-primary">Fee</span> {{ contest.entryFee.entryFeeString }}
+        <span class="label label-primary">Date</span> {{ contest.scheduleGroup.name }}
+    </div>
+</div>
+<div class="row">
+    <h4><span class="label label-primary">Games</span></h4>
+    {{ render(controller('GameBundle:Contest:getGamesForScheduleGroup', {'id': contest.scheduleGroup.id })) }}
+</div>
+<div id="schedules" class="row">
+
+</div>
+<div class="row">
+    <h4><span class="label label-primary">Prizes</span></h4>
+    {{ render(controller('GameBundle:Contest:getPrizes', {'playerCount':contest.playerCount, 'gameFee': contest.entryFee.id, 'payoutStructure': contest.payoutStructure.id })) }}
+</div>

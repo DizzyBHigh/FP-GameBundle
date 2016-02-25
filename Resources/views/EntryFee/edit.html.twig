@@ -1,0 +1,11 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form %}
+    <h2>EntryFees edit</h2>
+    <a href="{{ path('entryfee') }}" class="btn-primary btn-sm">Back</a>
+
+    {{ form(edit_form) }}
+
+    {{ form(delete_form) }}
+
+{% endblock %}

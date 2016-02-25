@@ -1,0 +1,55 @@
+{% extends '@Design/Default/layout-main.html.twig' %}
+{% block title %}Create Contest{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/design/css/homebase.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/design/css/menu.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/design/css/bootstrap.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block header %}
+    {% include 'DesignBundle:Default/Menus:homepage-menu.html.twig' %}
+    <div class="row">
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <section>
+
+        <div class="container">
+            <div class="row jumbotron color-bkg">
+                <div class="row">
+                    <h2><span class="glyphicon glyphicon-pencil"></span>Your Contests</h2>
+                </div>
+                <div class="row">
+
+                    <div class="row centered-form">
+                        {% include 'GameBundle:List:contest_entries.Partial.twig' %}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+        });
+    </script>
+
+{% endblock %}
+

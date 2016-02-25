@@ -1,0 +1,15 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form %}
+    <h1>EntryFees creation</h1>
+
+    {{ form(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('entryfee') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}

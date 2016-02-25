@@ -1,0 +1,9 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form %}
+    <h2>Edit Schedule Group </h2>
+
+    <a href="{{ path('schedulegroup') }}" class="btn-sm btn-primary">Back</a>
+    {{ form(edit_form) }}
+    {{ form(delete_form) }}
+{% endblock %}

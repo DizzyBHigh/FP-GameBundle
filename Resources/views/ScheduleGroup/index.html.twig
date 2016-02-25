@@ -1,0 +1,50 @@
+{% extends '@Design/Default/formbase.html.twig' %}
+
+{% block form %}
+    <h2>Schedule Groups</h2>
+    <table class="table-condensed table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Games</th>
+            <th>
+                <a href="{{ path('schedulegroup_new') }}">
+                    <button type="button" class="btn btn-success">
+                        Create a new entry
+                    </button>
+                </a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for schedulegroup in schedulegroups %}
+            <tr>
+                <td><a href="{{ path('schedulegroup_show', { 'id': schedulegroup.id }) }}">{{ schedulegroup.id }}</a>
+                </td>
+                <td>{{ schedulegroup.name }}</td>
+                <td>
+                    {% for schedules in schedulegroup.schedules %}
+                        <div class="label label-info">{{ schedules.awayTeam }} vs {{ schedules.homeTeam }}
+                            @ {{ schedules.timeOnly|date('h:m a') }}</div>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('schedulegroup_show', { 'id': schedulegroup.id }) }}">
+                        <button type="button" class="btn-sm btn-primary">View</button>
+                    </a>
+                    <a href="{{ path('schedulegroup_edit', { 'id': schedulegroup.id }) }}">
+                        <button type="button" class="btn-sm btn-primary">Edit</button>
+                    </a>
+                    <a href="{{ path('schedulegroup_delete', { 'id': schedulegroup.id }) }}">
+                        <button type="button" class="btn-sm btn-warning">Delete</button>
+                    </a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

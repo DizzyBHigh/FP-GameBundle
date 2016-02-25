@@ -1,0 +1,129 @@
+<form action="{{ path('update_contestentry', {'id' : contestEntry.Id} ) }}" method="POST" class="form-horizontal"
+      role="form" novalidate="novalidate" id="contestForm">
+    <h3>Choose your squad</h3>
+
+    <table id="squadList" class="table table-condensed">
+        <thead>
+        <tr>
+            <td colspan="4"><span class="pull-right">Remaining Salary</span></td>
+            <td colspan="2"><span id="salaryLeft" class="pull-right">$50,000</span></td>
+        </tr>
+        <tr>
+            <th>Position</th>
+            <th>Player</th>
+            <th>Team/Opp</th>
+            <th>Opp Rank</th>
+            <th>FPPG</th>
+            <th>Salary</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="qb">
+            <th id="qb-pos">
+                <span class="label label-primary">QB</span>
+            </th>
+            <th id="qb-name"></th>
+            <th id="qb-team-opp"></th>
+            <th id="qb-opprank"></th>
+            <th id="qb-ffpg"></th>
+            <th id="qb-salary"></th>
+            <th id="qb-tools"></th>
+        </tr>
+        <tr id="rb1">
+            <th id="rb1-pos">
+                <span class="label label-primary">RB</span>
+            </th>
+            <th id="rb1-name"></th>
+            <th id="rb1-team-opp"></th>
+            <th id="rb1-opprank"></th>
+            <th id="rb1-ffpg"></th>
+            <th id="rb1-salary"></th>
+            <th id="rb1-tools"></th>
+        </tr>
+        <tr id="rb2">
+            <th id="rb2-pos">
+                <span class="label label-primary">RB</span>
+            </th>
+            <th id="rb2-name"></th>
+            <th id="rb2-team-opp"></th>
+            <th id="rb2-opprank"></th>
+            <th id="rb2-ffpg"></th>
+            <th id="rb2-salary"></th>
+            <th id="rb2-tools"></th>
+        </tr>
+        <tr id="wr1">
+            <th id="wr1-pos">
+                <span class="label label-primary">WR</span>
+            </th>
+            <th id="wr1-name"></th>
+            <th id="wr1-team-opp"></th>
+            <th id="wr1-opprank"></th>
+            <th id="wr1-ffpg"></th>
+            <th id="wr1-salary"></th>
+            <th id="wr1-tools"></th>
+        </tr>
+        <tr id="wr2">
+            <th id="wr2-pos">
+                <span class="label label-primary">WR</span>
+            </th>
+            <th id="wr2-name"></th>
+            <th id="wr2-team-opp"></th>
+            <th id="wr2-opprank"></th>
+            <th id="wr2-ffpg"></th>
+            <th id="wr2-salary"></th>
+            <th id="wr2-tools"></th>
+        </tr>
+        <tr id="te">
+            <th id="te-pos">
+                <span class="label label-primary">TE</span>
+            </th>
+            <th id="te-name"></th>
+            <th id="te-team-opp"></th>
+            <th id="te-opprank"></th>
+            <th id="te-ffpg"></th>
+            <th id="te-salary"></th>
+            <th id="te-tools"></th>
+        </tr>
+        <tr id="flex">
+            <th id="flex-pos">
+                <span class="label label-primary">FLEX</span>
+            </th>
+            <th id="flex-name"></th>
+            <th id="flex-team-opp"></th>
+            <th id="flex-opprank"></th>
+            <th id="flex-ffpg"></th>
+            <th id="flex-salary"></th>
+            <th id="flex-tools"></th>
+        </tr>
+        <tr id="k">
+            <th id="k-pos">
+                <span class="label label-primary">K</span>
+            </th>
+            <th id="k-name"></th>
+            <th id="k-team-opp"></th>
+            <th id="k-opprank"></th>
+            <th id="k-ffpg"></th>
+            <th id="k-salary"></th>
+            <th id="k-tools"></th>
+        </tr>
+        <tr id="def">
+            <th id="wr1-pos">
+                <span class="label label-primary">DEF</span>
+            </th>
+            <th id="def-name"></th>
+            <th id="def-team-opp"></th>
+            <th id="def-opprank"></th>
+            <th id="def-ffpg"></th>
+            <th id="def-salary"></th>
+            <th id="def-tools"></th>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+    </div>
+    {{ form_start(contestForm) }}
+    {{ form_widget(contestForm) }}
+    {{ form_end(contestForm) }}
+</form>
+
